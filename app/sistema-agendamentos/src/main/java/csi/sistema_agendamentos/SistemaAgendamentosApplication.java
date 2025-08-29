@@ -27,17 +27,17 @@ public class SistemaAgendamentosApplication {
 
             try {
                 Usuario usuario = new Usuario();
-                usuario.setNome("Usuario 1");
+                usuario.setNome("Usuario 2");
                 usuario.setSenha("123456");
-                usuario.setCpf("123456");
-                usuario.setEmail("usuario@email.com");
+                usuario.setCpf("123676");
+                usuario.setEmail("usuario2@email.com");
                 usuario.setTipo_usuario(1);
-                usuario.setMatricula("123456");
+                usuario.setMatricula("1756");
 
                 UsuarioRepository.save(usuario);
 
                 Sala sala = new Sala();
-                sala.setNome_sala("F-209");
+                sala.setNome_sala("F-208");
                 sala.setAtivo(true);
                 sala.setTipo_sala("Laboratorio");
                 sala.setCapacidade(30);

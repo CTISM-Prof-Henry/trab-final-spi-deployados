@@ -1,0 +1,3 @@
+ALTER TABLE agendamentos
+    ALTER COLUMN data_inicio TYPE TIMESTAMP,
+    ALTER COLUMN data_fim TYPE TIMESTAMP;
