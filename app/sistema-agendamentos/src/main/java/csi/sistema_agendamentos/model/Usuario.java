@@ -16,12 +16,25 @@ import lombok.Setter;
 public class Usuario {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer id_usuario;
-    private int tipo_usuario;
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
+
+    @Column(name = "tipo_usuario")
+    private int tipoUsuario;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "cpf")
     private String cpf;
+
+    @Column(name = "matricula")
     private String matricula;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "senha")
     private String senha;
 
 }

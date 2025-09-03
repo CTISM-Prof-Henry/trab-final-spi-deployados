@@ -17,12 +17,25 @@ public class Sala {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_sala;
-    private String nome_sala;
-    private String tipo_sala;
+    @Column(name = "id_sala")
+    private Integer idSala;
+
+    @Column(name = "nome_sala")
+    private String nomeSala;
+
+    @Column(name = "tipo_sala")
+    private String tipoSala;
+
+    @Column(name = "predio")
     private String predio;
+
+    @Column(name = "complemento")
     private String complemento;
+
+    @Column(name = "capacidade")
     private int capacidade;
+
+    @Column(name = "ativo")
     private boolean ativo;
 
 }
