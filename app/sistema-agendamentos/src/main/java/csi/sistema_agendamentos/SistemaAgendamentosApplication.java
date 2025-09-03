@@ -40,6 +40,7 @@ public class SistemaAgendamentosApplication {
                 var salas = List.of(
                         new Sala(null, "F-109", "Laboratorio", "Politécnico", "Bloco F", 40, true),
                         new Sala(null, "F-207", "Laboratorio", "Politécnico", "Bloco F", 35, true),
+                        new Sala(null, "F-209", "Laboratorio", "Politécnico", "Bloco F", 35, true),
                         new Sala(null, "G-109", "Laboratorio", "Politécnico", "Bloco G", 40, true),
                         new Sala(null, "G-209", "Laboratorio", "Politécnico", "Bloco G", 40, true),
                         new Sala(null, "G-209", "Laboratorio", "Politécnico", "Bloco G", 40, true)
