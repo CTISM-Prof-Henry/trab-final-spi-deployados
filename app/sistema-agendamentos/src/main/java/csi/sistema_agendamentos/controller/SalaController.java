@@ -1,6 +1,8 @@
 package csi.sistema_agendamentos.controller;
+
+import csi.sistema_agendamentos.dto.SalaDTO; // Importar o DTO
 import csi.sistema_agendamentos.service.SalaService;
-import csi.sistema_agendamentos.model.Sala;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,39 +18,34 @@ public class SalaController {
         this.salaService = salaService;
     }
 
-    // GET /salas
     @GetMapping
-    public List<Sala> listarTodas() {
+    public List<SalaDTO> listarTodas() {
         return salaService.listarTodas();
     }
 
-    // GET /salas/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<Sala> buscarPorId(@PathVariable Integer id) {
+    public ResponseEntity<SalaDTO> buscarPorId(@PathVariable Integer id) {
         return salaService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // POST /salas
     @PostMapping
-    public ResponseEntity<Sala> criar(@RequestBody Sala sala) {
-        Sala novaSala = salaService.salvar(sala);
-        return ResponseEntity.ok(novaSala);
+    public ResponseEntity<SalaDTO> criar(@RequestBody SalaDTO salaDTO) {
+        SalaDTO novaSalaDTO = salaService.salvar(salaDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novaSalaDTO);
     }
 
-    // PUT /salas/{id}
     @PutMapping("/{id}")
-    public ResponseEntity<Sala> atualizar(@PathVariable Integer id, @RequestBody Sala sala) {
+    public ResponseEntity<SalaDTO> atualizar(@PathVariable Integer id, @RequestBody SalaDTO salaDTO) {
         try {
-            Sala salaAtualizada = salaService.atualizar(id, sala);
-            return ResponseEntity.ok(salaAtualizada);
+            SalaDTO salaAtualizadaDTO = salaService.atualizar(id, salaDTO);
+            return ResponseEntity.ok(salaAtualizadaDTO);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    // DELETE /salas/{id}
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Integer id) {
         try {
