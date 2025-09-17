@@ -1,0 +1,17 @@
+package csi.sistema_agendamentos.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+public class AgendamentosDTO {
+
+    private Integer id;
+    private LocalDateTime dataInicio;
+    private LocalDateTime dataFim;
+    private String status;
+    private Integer usuarioId;
+    private Integer salaId;
+}
