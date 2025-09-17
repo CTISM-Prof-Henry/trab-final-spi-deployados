@@ -8,4 +8,5 @@ import java.util.List;
 public interface AgendamentosRepository extends JpaRepository<Agendamentos, Integer> {
 
     List<Agendamentos> findBySalaIdSala(Integer idSala);
+
 }

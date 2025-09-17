@@ -1,5 +1,6 @@
 package csi.sistema_agendamentos.dto;
 
+import csi.sistema_agendamentos.model.Agendamentos;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
@@ -13,5 +14,9 @@ public class AgendamentosDTO {
     private LocalDateTime dataFim;
     private String status;
     private Integer usuarioId;
+    private String usuarioNome;
     private Integer salaId;
+    private String salaNome;
+
+
 }
