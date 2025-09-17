@@ -97,6 +97,8 @@ public class AgendamentosService {
         dto.setStatus(agendamento.getStatus());
         dto.setSalaId(agendamento.getSala().getIdSala());
         dto.setUsuarioId(agendamento.getUsuario().getIdUsuario());
+        dto.setUsuarioNome(agendamento.getUsuario().getNome());
+        dto.setSalaNome(agendamento.getSala().getNomeSala());
         return dto;
     }
 
