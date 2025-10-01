@@ -37,7 +37,7 @@ public class AgendamentosService {
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + dto.getUsuarioId()));
 
         Agendamentos agendamento = convertToEntity(dto, sala, usuario);
-        agendamento.setStatus("CONFIRMADO");
+        agendamento.setStatus("Ativo");
 
         Agendamentos agendamentoSalvo = agendamentosRepository.save(agendamento);
         return convertToDTO(agendamentoSalvo);

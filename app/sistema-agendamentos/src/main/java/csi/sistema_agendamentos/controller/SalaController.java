@@ -1,6 +1,7 @@
 package csi.sistema_agendamentos.controller;
 
 import csi.sistema_agendamentos.dto.SalaDTO; // Importar o DTO
+import csi.sistema_agendamentos.model.Sala;
 import csi.sistema_agendamentos.service.SalaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,13 @@ public class SalaController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/bloco/{bloco}")
+    public ResponseEntity<List<Sala>> listarSalasPorBloco(@PathVariable String bloco) {
+        List<Sala> salas = salaService.listarSalasPorBloco(bloco);
+        return ResponseEntity.ok(salas);
+    }
+
 
     @PostMapping
     public ResponseEntity<SalaDTO> criar(@RequestBody SalaDTO salaDTO) {

@@ -1,5 +1,6 @@
 package csi.sistema_agendamentos.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Agendamentos {
     private Usuario usuario;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "cod_sala")
     private Sala sala;
 

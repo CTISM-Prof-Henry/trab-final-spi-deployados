@@ -3,6 +3,7 @@ package csi.sistema_agendamentos.controller;
 import csi.sistema_agendamentos.dto.LoginDTO;
 import csi.sistema_agendamentos.model.Usuario;
 import csi.sistema_agendamentos.service.UsuarioService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class UsuarioController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO login) {
+    public ResponseEntity<?> login(@RequestBody LoginDTO login, HttpSession session) {
         if (login.getCpf() == null || login.getCpf().trim().isEmpty() ||
                 login.getSenha() == null || login.getSenha().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("CPF e senha são obrigatórios.");
@@ -32,13 +33,15 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("CPF ou senha incorretos.");
         }
 
+
+        session.setAttribute("idUsuario", usuario.getIdUsuario());
+
         return ResponseEntity.ok(Map.of(
                 "idUsuario", usuario.getIdUsuario(),
                 "nome", usuario.getNome(),
                 "tipoUsuario", usuario.getTipoUsuario()
         ));
     }
-
     @GetMapping("/acessar/{id}")
     public ResponseEntity<String> acessarRecurso(@PathVariable Integer id) {
         Usuario usuario = usuarioService.buscarUsuarioPorId(id).orElse(null);
