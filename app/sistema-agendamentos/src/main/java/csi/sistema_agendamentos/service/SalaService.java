@@ -21,6 +21,7 @@ public class SalaService {
 
     private SalaDTO toDTO(Sala sala) {
         SalaDTO dto = new SalaDTO();
+        dto.setIdSala(sala.getIdSala());
         dto.setNomeSala(sala.getNomeSala());
         dto.setTipoSala(sala.getTipoSala());
         dto.setPredio(sala.getPredio());
@@ -46,6 +47,11 @@ public class SalaService {
         return salaRepository.findAll().stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<Sala> listarSalasPorBloco(String bloco) {
+        return salaRepository.findByComplementoContainingIgnoreCase(bloco);
     }
 
     @Transactional(readOnly = true)

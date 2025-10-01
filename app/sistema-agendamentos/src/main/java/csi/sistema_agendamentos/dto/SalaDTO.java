@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class SalaDTO {
 
+    private Integer idSala;
     private String nomeSala;
     private String tipoSala;
     private String predio;
