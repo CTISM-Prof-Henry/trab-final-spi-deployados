@@ -35,6 +35,7 @@ public class UsuarioController {
 
 
         session.setAttribute("idUsuario", usuario.getIdUsuario());
+        session.setAttribute("tipoUsuario", usuario.getTipoUsuario());
 
         return ResponseEntity.ok(Map.of(
                 "idUsuario", usuario.getIdUsuario(),
