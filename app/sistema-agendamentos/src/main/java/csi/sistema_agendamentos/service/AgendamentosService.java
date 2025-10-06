@@ -36,12 +36,26 @@ public class AgendamentosService {
         Usuario usuario = usuarioRepository.findById(dto.getUsuarioId())
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + dto.getUsuarioId()));
 
+
+        List<Agendamentos> conflitos = agendamentosRepository.findConflitos(
+                sala.getIdSala(),
+                "Ativo",
+                dto.getDataInicio(),
+                dto.getDataFim()
+        );
+
+        if (!conflitos.isEmpty()) {
+            throw new IllegalArgumentException("Já existe um agendamento para esta sala neste horário!");
+        }
+
         Agendamentos agendamento = convertToEntity(dto, sala, usuario);
         agendamento.setStatus("Ativo");
 
         Agendamentos agendamentoSalvo = agendamentosRepository.save(agendamento);
         return convertToDTO(agendamentoSalvo);
     }
+
+
 
     @Transactional(readOnly = true)
     public List<AgendamentosDTO> listarTodos() {

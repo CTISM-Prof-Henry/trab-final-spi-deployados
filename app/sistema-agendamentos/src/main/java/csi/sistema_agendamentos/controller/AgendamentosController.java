@@ -21,10 +21,16 @@ public class AgendamentosController {
     }
 
     @PostMapping
-    public ResponseEntity<AgendamentosDTO> criar(@RequestBody AgendamentosDTO dto) {
-        AgendamentosDTO agendamentoCriado = agendamentosService.criarAgendamento(dto);
-        return new ResponseEntity<>(agendamentoCriado, HttpStatus.CREATED);
+    public ResponseEntity<?> criar(@RequestBody AgendamentosDTO dto) {
+        try {
+            AgendamentosDTO agendamentoCriado = agendamentosService.criarAgendamento(dto);
+            return new ResponseEntity<>(agendamentoCriado, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
+
+
 
     @GetMapping
     public ResponseEntity<List<AgendamentosDTO>> listarTodos() {
