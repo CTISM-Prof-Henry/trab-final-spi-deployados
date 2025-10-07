@@ -14,6 +14,20 @@
 Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica a usufruir a estrutura disponível no Colégio para realizar as atividades de classe e extra-classe, tirando o máximo proveito e auxiliando nos projetos e objetivos escolares/ acadêmicos
 
 
+## Pré-requisitos
+
+Configuração mínima da máquina em que o código foi desenvolvido:
+
+| Configuração        | Valor                    |
+|---------------------|--------------------------|
+| Sistema operacional | Windows 10 Pro (64 bits) |
+| Processador         | Intel core i7 9700       |
+| Memória RAM         | 8 GB                     |
+| Necessita rede?     | Não                      |
+
+
+
+
 ## Como funciona
 
 * Instalar dependências no seu computador:
@@ -38,6 +52,13 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica a usufru
     * Backend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`
 
     * Frontend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend`
+    
+
+
+
+
+## Como agendar?
+
 
 
 
