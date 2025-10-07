@@ -79,7 +79,7 @@ PostgreSQL
  
 ## Como rodar
 
-   1. De o git clone no repositório de backend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`.
+   1. De o git clone no repositório de backend: `git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`.
    2. Criar o banco de dados "sistema-agendamentos".
    3. Troque a senha do seu banco de dados no arquivo application.proprieties para a sua senha.
    4. Rode o backend. Ele estará rodando na porta 8080, você poderá confirmar no link http://localhost:8080.
