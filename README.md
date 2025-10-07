@@ -14,7 +14,6 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 * [Contato](#contato)
 * [Bibliografia](#bibliografia)
 
-## Funcionalidades
 
 ## Funcionalidades
 
