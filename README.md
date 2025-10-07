@@ -5,12 +5,20 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 
 ## Sumário
 
+* [Funcionalidades](#funcionalidades)
 * [Pré-requisitos](#pré-requisitos)
 * [Instalação](#instalação)
 * [Instruções de uso](#instruções-de-uso)
 * [Como rodar](#como-rodar)
 * [Contato](#contato)
 * [Bibliografia](#bibliografia)
+
+## Funcionalidades
+
+### Autenticação de login:
+### Dashboard de agendamento:
+### Controle de agendamentos:
+### Controle de salas - reservado a administradores:
 
 ## Pré-requisitos
 
@@ -48,6 +56,7 @@ Configuração mínima da máquina em que o código foi desenvolvido:
     * Frontend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend`
  
 ## Como rodar
+
 
 ## Contato
 
