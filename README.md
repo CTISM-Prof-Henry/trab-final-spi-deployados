@@ -15,10 +15,10 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 
 ## Funcionalidades
 
-### Autenticação de login:
-### Dashboard de agendamento:
-### Controle de agendamentos:
-### Controle de salas - reservado a administradores:
+#### Autenticação de login: Acesso livre ao site, porém para realizar agendamentos é necessário a autenticação através do CPF e senha de usuário.
+#### Dashboard de agendamento: O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco desejado, e a sala. Posteriormente, será exibido no calendario os agendamentos para a semana daquela sala. Clicando no botão de "Agendar" o usuário conseguirá realizar um agendamento ou será redirecionado para a página de login.
+#### Controle de agendamentos: Uma página onde é possível visualizar os agendamentos realizados pelo usuário e seud status.
+#### Controle de salas - reservado a administradores: Uma página onde usuário com controle de administrador, conseguem cadastrar, alterar e ativar/desativar salas.
 
 ## Pré-requisitos
 
