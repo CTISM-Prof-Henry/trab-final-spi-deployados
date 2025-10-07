@@ -21,7 +21,7 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 Acesso livre ao site, porém para realizar agendamentos é necessário a autenticação através do CPF e senha de usuário.
 
 #### **Dashboard de agendamento:**  
-O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco desejado e a sala. Posteriormente, será exibido no calendário os agendamentos para a semana daquela sala. Clicando no botão de "Agendar", o usuário conseguirá realizar um agendamento ou será redirecionado para a página de login.
+O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco desejado e a sala. Posteriormente, será exibido no calendário os agendamentos para a semana daquela sala. Clicando no botão de "Agendar", o usuário conseguirá realizar um agendamento ou será redirecionado para a página de login (caso não esteja logado).
 
 #### **Controle de agendamentos:**  
 Uma página onde é possível visualizar os agendamentos realizados pelo usuário e seu status.
@@ -36,18 +36,18 @@ Configuração da máquina em que o código foi desenvolvido:
 
 | Configuração        | Valor                    |
 |---------------------|--------------------------|
-| Sistema operacional | Windows, Mac OS e Linux  |
+| Sistema operacional | Windows                  |
 | Necessita rede?     | Sim                      |
-| Ferramenta          | Intellij IDEA  |
+| Ferramenta          | Intellij IDEA            |
 
 
 ## Tecnologias utilizadas
 
 #### **Backend:**  
-Java 21, Spring Boot, Flyway, Hibernate
+Java 21, Spring Boot, Flyway e Hibernate
 
 #### **Frontend:**  
-Angular 12, Node
+Angular 12 e Node
 
 #### **Banco de Dados:**  
 PostgreSQL
@@ -86,7 +86,7 @@ PostgreSQL
    5. De o git clone no repositório de frontend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend`
    6. Instale as dependências do Angular. Use o comando npm install
    7. Rode o frontend, com o comando ng serve (caso sua versão global do Angular seja a 12.2.17).
-   8. Caso sua versão não seja a global use o comand: npx ng serve.
+   8. Caso sua versão não seja a global use o comando para rodar o angular com a versão do angular local (na pasta onde foi instalada as dependências): npx ng serve.
    9. O frontend estará rodando na porta 4200, você poderá confirmar no link http://localhost:4200.
 
 ## Contato
