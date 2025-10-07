@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
-# Título do repositório
+# Sistema de Agendamentos de Salas do Colégio Politécnico da UFSM
 
 Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica a usufruir a estrutura disponível no Colégio para realizar as atividades de classe e extra-classe, tirando o máximo proveito e auxiliando nos projetos e objetivos escolares/ acadêmicos
 
