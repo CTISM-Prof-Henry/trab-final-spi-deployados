@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
 # Título do repositório
 
-Descrição curta do repositório.
+Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica a usufruir a estrutura disponível no Colégio para realizar as atividades de classe e extra-classe, tirando o máximo proveito e auxiliando nos projetos e objetivos escolares/ acadêmicos
 
 ## Sumário
 
@@ -13,38 +13,52 @@ Descrição curta do repositório.
 
 ## Pré-requisitos
 
-Descreva aqui brevemente os pré-requisitos necessários para executar o código-fonte. Descreva também
-a configuração mínima da máquina em que o código foi desenvolvido, e se alguma configuração em particular é essencial
-para sua execução (por exemplo, placa de vídeo dedicada):
+Configuração mínima da máquina em que o código foi desenvolvido:
 
 | Configuração        | Valor                    |
 |---------------------|--------------------------|
 | Sistema operacional | Windows 10 Pro (64 bits) |
 | Processador         | Intel core i7 9700       |
-| Memória RAM         | 16GB                     |
+| Memória RAM         | 8 GB                     |
 | Necessita rede?     | Sim                      |
 
 
 ## Instalação
 
-Descreva aqui as instruções para instalação das ferramentas para execução do código-fonte: 
+* Instalar dependências no seu computador:
 
-```bash
-sudo apt-get install nano
-```
+    * NodeJS (escolhendo a versão desejada ou criando um ambiente virtual em docker:
+    
+    ` https://nodejs.org/en/download`
+    
+    * Angular (dentro do prompt de comando, verificando se o `node` está funcionando e o gerenciador de pacotes `npn`, digitar o seguinte comando):
+    
+    `npm install -g @angular/cli@12.2.7`
+    
+    **Lembrando que, se já houver uma versão do angular instalado em sua máquina, será preciso desinstalar.**
+    
+    * Java JDK
+    
+    * PostgreSQL
+
 
 ## Instruções de Uso
 
-Descreva aqui o passo-a-passo que outros usuários precisam realizar para conseguir executar com sucesso o código-fonte
-deste projeto:
+* Dê um fork através do github no projeto usando os seguintes endereços
 
-```bash
-echo "olá mundo!"
-```
+    * Backend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`
+
+    * Frontend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend`
 
 ## Contato
 
-O repositório foi originalmente desenvolvido por Fulano: [fulano@ufsm.br]()
+Projeto desenvolvido para a Disciplina de Engenharia de Software do Curso de Sistemas Para Internet, Colégio Politécnico de Santa Maria, pelos alunos
+
+Analissa
+Eduardo
+Luiza
+Stefhany
+Talia
 
 ## Bibliografia
 
