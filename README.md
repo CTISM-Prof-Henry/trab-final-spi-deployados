@@ -7,6 +7,7 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 
 * [Funcionalidades](#funcionalidades)
 * [Pré-requisitos](#pré-requisitos)
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Instalação](#instalação)
 * [Instruções de uso](#instruções-de-uso)
 * [Como rodar](#como-rodar)
@@ -15,20 +16,42 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 
 ## Funcionalidades
 
-#### Autenticação de login: Acesso livre ao site, porém para realizar agendamentos é necessário a autenticação através do CPF e senha de usuário.
-#### Dashboard de agendamento: O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco desejado, e a sala. Posteriormente, será exibido no calendario os agendamentos para a semana daquela sala. Clicando no botão de "Agendar" o usuário conseguirá realizar um agendamento ou será redirecionado para a página de login.
-#### Controle de agendamentos: Uma página onde é possível visualizar os agendamentos realizados pelo usuário e seud status.
-#### Controle de salas - reservado a administradores: Uma página onde usuário com controle de administrador, conseguem cadastrar, alterar e ativar/desativar salas.
+## Funcionalidades
+
+#### **Autenticação de login:**  
+Acesso livre ao site, porém para realizar agendamentos é necessário a autenticação através do CPF e senha de usuário.
+
+#### **Dashboard de agendamento:**  
+O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco desejado e a sala. Posteriormente, será exibido no calendário os agendamentos para a semana daquela sala. Clicando no botão de "Agendar", o usuário conseguirá realizar um agendamento ou será redirecionado para a página de login.
+
+#### **Controle de agendamentos:**  
+Uma página onde é possível visualizar os agendamentos realizados pelo usuário e seu status.
+
+#### **Controle de salas – reservado a administradores:**  
+Uma página onde usuários com controle de administrador conseguem cadastrar, alterar e ativar/desativar salas.
+
 
 ## Pré-requisitos
 
-Configuração mínima da máquina em que o código foi desenvolvido:
+Configuração da máquina em que o código foi desenvolvido:
 
 | Configuração        | Valor                    |
 |---------------------|--------------------------|
 | Sistema operacional | Windows, Mac OS e Linux  |
 | Necessita rede?     | Sim                      |
+| Ferramenta          | Intellij IDEA  |
 
+
+## Tecnologias utilizadas
+
+#### **Backend:**  
+Java 21, Spring Boot, Flyway, Hibernate
+
+#### **Frontend:**  
+Angular 12, Node
+
+#### **Banco de Dados:**  
+PostgreSQL
 
 ## Instalação
 
