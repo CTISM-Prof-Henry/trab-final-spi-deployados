@@ -20,7 +20,7 @@ Configuração mínima da máquina em que o código foi desenvolvido:
 | Sistema operacional | Windows 10 Pro (64 bits) |
 | Processador         | Intel core i7 9700       |
 | Memória RAM         | 8 GB                     |
-| Necessita rede?     | Sim                      |
+| Necessita rede?     | Não                      |
 
 
 ## Instalação
@@ -54,14 +54,12 @@ Configuração mínima da máquina em que o código foi desenvolvido:
 
 Projeto desenvolvido para a Disciplina de Engenharia de Software do Curso de Sistemas Para Internet, Colégio Politécnico de Santa Maria, pelos alunos
 
-Analissa
-Eduardo
-Luiza
-Stefhany
-Talia
+* Analissa
+* Eduardo
+* Luiza
+* Stefhany
+* Talia
 
 ## Bibliografia
 
-Adicione aqui entradas numa lista com a documentação pertinente:
-
-* [Documentação coplin-db2](https://pypi.org/project/coplin-db2/)
+Documentação
