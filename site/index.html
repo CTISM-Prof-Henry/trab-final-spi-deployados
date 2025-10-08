@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Sistema de Agendamentos</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Software de agendamento de Salas de Aula do Col\u00e9gio Polit\u00e9cnico";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Sistema de Agendamentos
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Software de agendamento de Salas de Aula do Colégio Politécnico</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#para-que-serve">Para que serve?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#funcionalidades">Funcionalidades</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#autenticacao-de-login">Autenticação de login:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dashboard-de-agendamento">Dashboard de agendamento:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controle-de-agendamentos">Controle de agendamentos:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controle-de-salas-reservado-a-administradores">Controle de salas – reservado a administradores:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requisitos-para-funcionamento">Requisitos para funcionamento</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#backend">Backend:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#banco-de-dados">Banco de Dados:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#como-funciona">Como funciona</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instrucoes-de-uso">Instruções de Uso</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#como-rodar">Como rodar</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Sistema de Agendamentos</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Software de agendamento de Salas de Aula do Colégio Politécnico</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="software-de-agendamento-de-salas-de-aula-do-colegio-politecnico">Software de agendamento de Salas de Aula do Colégio Politécnico</h1>
+<h2 id="para-que-serve">Para que serve?</h2>
+<p>Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docente a usufruir da estrutura disponível no Colégio Politécnico. Com o objetivo de permitir o agendamento de salas e laboratórios, através da realização das atividades de classe e extra-classe.</p>
+<h2 id="funcionalidades">Funcionalidades</h2>
+<h4 id="autenticacao-de-login"><strong>Autenticação de login:</strong></h4>
+<p>Acesso livre ao site, porém para realizar agendamentos é necessário a autenticação através do CPF e senha de usuário.</p>
+<h4 id="dashboard-de-agendamento"><strong>Dashboard de agendamento:</strong></h4>
+<p>O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco desejado e a sala. Posteriormente, será exibido no calendário os agendamentos para a semana daquela sala. Clicando no botão de "Agendar", o usuário conseguirá realizar um agendamento ou será redirecionado para a página de login (caso não esteja logado).</p>
+<h4 id="controle-de-agendamentos"><strong>Controle de agendamentos:</strong></h4>
+<p>Uma página onde é possível visualizar os agendamentos realizados pelo usuário e seu status.</p>
+<h4 id="controle-de-salas-reservado-a-administradores"><strong>Controle de salas – reservado a administradores:</strong></h4>
+<p>Uma página onde usuários com controle de administrador conseguem cadastrar, alterar e ativar/desativar salas.\</p>
+<h2 id="requisitos-para-funcionamento">Requisitos para funcionamento</h2>
+<p>Configuração da máquina em que o código foi desenvolvido:</p>
+<table>
+<thead>
+<tr>
+<th>Configuração</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema operacional</td>
+<td>Windows</td>
+</tr>
+<tr>
+<td>Necessita rede?</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Ferramenta</td>
+<td>Intellij IDEA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tecnologias-utilizadas">Tecnologias utilizadas</h2>
+<h4 id="backend"><strong>Backend:</strong></h4>
+<p>Java 21, Spring Boot, Flyway e Hibernate</p>
+<h4 id="frontend"><strong>Frontend:</strong></h4>
+<p>Angular 12 e Node</p>
+<h4 id="banco-de-dados"><strong>Banco de Dados:</strong></h4>
+<p>PostgreSQL</p>
+<h2 id="como-funciona">Como funciona</h2>
+<ul>
+<li>
+<p>Instalar dependências no seu computador:</p>
+<ul>
+<li>NodeJS (versão recomendada 16.13.0):</li>
+</ul>
+<p><code>https://nodejs.org/en/download</code></p>
+<ul>
+<li>Angular (dentro do prompt de comando, verificando se o <code>node</code> está funcionando e o gerenciador de pacotes <code>npn</code>, digitar o seguinte comando):</li>
+</ul>
+<p><code>npm install -g @angular/cli@12.2.17</code></p>
+<ul>
+<li>
+<p>Java JDK 21 ou superior</p>
+</li>
+<li>
+<p>PostgreSQL 16 ou superior</p>
+</li>
+</ul>
+<p><strong>Lembrando que, se já houver uma versão do angular instalado em sua máquina, será preciso desinstalar.</strong></p>
+<ul>
+<li>
+<p>Java JDK</p>
+</li>
+<li>
+<p>PostgreSQL</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="instrucoes-de-uso">Instruções de Uso</h2>
+<ul>
+<li>
+<p>Dê um fork através do github no projeto usando os seguintes endereços</p>
+<ul>
+<li>
+<p>Backend: <code>https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/</code></p>
+</li>
+<li>
+<p>Frontend: <code>https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="como-rodar">Como rodar</h2>
+<ol>
+<li>De o git clone no repositório de backend: <code>git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/</code>.</li>
+<li>Criar o banco de dados "sistema-agendamentos".</li>
+<li>Troque a senha do seu banco de dados no arquivo application.proprieties para a sua senha.</li>
+<li>Rode o backend. Ele estará rodando na porta 8080, você poderá confirmar no link http://localhost:8080.</li>
+<li>De o git clone no repositório de frontend: <code>git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend</code></li>
+<li>Instale as dependências do Angular. Use o comando <code>npm install</code></li>
+<li>Rode o frontend, com o comando <code>ng serve</code> (caso sua versão global do Angular seja a 12.2.17).</li>
+<li>Caso sua versão não seja a global use o comando para rodar o angular com a versão do angular local (na pasta onde foi instalada as dependências): <code>npx ng serve</code>.</li>
+<li>O frontend estará rodando na porta 4200, você poderá confirmar no link http://localhost:4200.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-10-08 00:30:15.864643+00:00
+-->
