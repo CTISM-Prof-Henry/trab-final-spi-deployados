@@ -45,36 +45,48 @@ public class SalaController {
 
     @PostMapping
     public ResponseEntity<?> criar(@RequestBody SalaDTO salaDTO, HttpSession session) {
+        ResponseEntity<?> response;
+
         if (!isAdmin(session)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado. Requer permissão de administrador.");
+            response = ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado. Requer permissão de administrador.");
+        }  else{
+            SalaDTO novaSalaDTO = salaService.salvar(salaDTO);
+            response = ResponseEntity.status(HttpStatus.CREATED).body(novaSalaDTO);
+
         }
-        SalaDTO novaSalaDTO = salaService.salvar(salaDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novaSalaDTO);
+        return response;
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizar(@PathVariable Integer id, @RequestBody SalaDTO salaDTO, HttpSession session) {
+        ResponseEntity<?> response;
         if (!isAdmin(session)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado. Requer permissão de administrador.");
+            response = ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado. Requer permissão de administrador.");
+        } else {
+            try {
+                SalaDTO salaAtualizadaDTO = salaService.atualizar(id, salaDTO);
+                response = ResponseEntity.ok(salaAtualizadaDTO);
+            } catch (RuntimeException e) {
+                response = ResponseEntity.notFound().build();
+            }
         }
-        try {
-            SalaDTO salaAtualizadaDTO = salaService.atualizar(id, salaDTO);
-            return ResponseEntity.ok(salaAtualizadaDTO);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        return response;
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletar(@PathVariable Integer id, HttpSession session) {
+        ResponseEntity<String> response;
         if (!isAdmin(session)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado. Requer permissão de administrador.");
+            response = ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado. Requer permissão de administrador.");
+        } else{
+            try {
+                salaService.deletar(id);
+                response = ResponseEntity.noContent().build();
+            } catch (RuntimeException e) {
+                response = ResponseEntity.notFound().build();
+            }
         }
-        try {
-            salaService.deletar(id);
-            return ResponseEntity.noContent().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        return response;
     }
+
 }

@@ -22,41 +22,51 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO login, HttpSession session) {
+        ResponseEntity<?> response;
+
         if (login.getCpf() == null || login.getCpf().trim().isEmpty() ||
                 login.getSenha() == null || login.getSenha().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("CPF e senha são obrigatórios.");
+            response = ResponseEntity.badRequest().body("CPF e senha são obrigatórios.");
+        } else {
+            Usuario usuario = usuarioService.buscarUsuarioPorCpf(login.getCpf());
+
+            if (usuario == null || !usuario.getSenha().equals(login.getSenha())) {
+                response = ResponseEntity
+                        .status(HttpStatus.UNAUTHORIZED)
+                        .body("CPF ou senha incorretos.");
+            } else {
+                session.setAttribute("idUsuario", usuario.getIdUsuario());
+                session.setAttribute("tipoUsuario", usuario.getTipoUsuario());
+
+                response = ResponseEntity.ok(Map.of(
+                        "idUsuario", usuario.getIdUsuario(),
+                        "nome", usuario.getNome(),
+                        "tipoUsuario", usuario.getTipoUsuario()
+                ));
+            }
         }
 
-        Usuario usuario = usuarioService.buscarUsuarioPorCpf(login.getCpf());
-
-        if (usuario == null || !usuario.getSenha().equals(login.getSenha())) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("CPF ou senha incorretos.");
-        }
-
-
-        session.setAttribute("idUsuario", usuario.getIdUsuario());
-        session.setAttribute("tipoUsuario", usuario.getTipoUsuario());
-
-        return ResponseEntity.ok(Map.of(
-                "idUsuario", usuario.getIdUsuario(),
-                "nome", usuario.getNome(),
-                "tipoUsuario", usuario.getTipoUsuario()
-        ));
+        return response;
     }
+
     @GetMapping("/acessar/{id}")
     public ResponseEntity<String> acessarRecurso(@PathVariable Integer id) {
+        ResponseEntity<String> response;
+
         Usuario usuario = usuarioService.buscarUsuarioPorId(id).orElse(null);
 
         if (usuario == null) {
-            return ResponseEntity.notFound().build();
+            response = ResponseEntity.notFound().build();
+        } else{
+            switch (usuario.getTipoUsuario()) {
+                case 1 -> response = ResponseEntity.ok("Acessado: ADMIN.");
+                case 2 -> response = ResponseEntity.ok("Acessado: DOCENTE.");
+                case 3 -> response = ResponseEntity.ok("Acessado: ALUNO.");
+                default -> response  = ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado.");
+            };
         }
+        return response;
 
-        return switch (usuario.getTipoUsuario()) {
-            case 1 -> ResponseEntity.ok("Acessado: ADMIN.");
-            case 2 -> ResponseEntity.ok("Acessado: DOCENTE.");
-            case 3 -> ResponseEntity.ok("Acessado: ALUNO.");
-            default -> ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado.");
-        };
     }
 
     @GetMapping
