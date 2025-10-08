@@ -59,10 +59,7 @@ PostgreSQL
     
     **Lembrando que, se já houver uma versão do angular instalado em sua máquina, será preciso desinstalar.**
     
-    * Java JDK
     
-    * PostgreSQL
-
 ## Instruções de Uso
 
 * Dê um fork através do github no projeto usando os seguintes endereços
