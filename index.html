@@ -42,19 +42,37 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Software de agendamento de Salas de Aula do Colégio Politécnico</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#requisitos-para-funcionamento">Requisitos para funcionamento</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#para-que-serve">Para que serve?</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pre-requisitos">Pré-requisitos</a>
+    <li class="toctree-l2"><a class="reference internal" href="#funcionalidades">Funcionalidades</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#autenticacao-de-login">Autenticação de login:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dashboard-de-agendamento">Dashboard de agendamento:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controle-de-agendamentos">Controle de agendamentos:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controle-de-salas-reservado-a-administradores">Controle de salas – reservado a administradores:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requisitos-para-funcionamento">Requisitos para funcionamento</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#backend">Backend:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#banco-de-dados">Banco de Dados:</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#como-funciona">Como funciona</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#como-agendar">Como agendar?</a>
+    <li class="toctree-l2"><a class="reference internal" href="#instrucoes-de-uso">Instruções de Uso</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#estrutura-do-frontend">Estrutura do frontend</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#estrutura-do-backend">Estrutura do backend</a>
+    <li class="toctree-l2"><a class="reference internal" href="#como-rodar">Como rodar</a>
     </li>
     </ul>
                 </li>
@@ -83,17 +101,19 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="software-de-agendamento-de-salas-de-aula-do-colegio-politecnico">Software de agendamento de Salas de Aula do Colégio Politécnico</h1>
-<h2 id="requisitos-para-funcionamento">Requisitos para funcionamento</h2>
-<ul>
-<li>Angular 12.2.7</li>
-<li>Node 16.13.0</li>
-<li>Java</li>
-<li>``</li>
-</ul>
 <h2 id="para-que-serve">Para que serve?</h2>
-<p>Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica a usufruir a estrutura disponível no Colégio para realizar as atividades de classe e extra-classe, tirando o máximo proveito e auxiliando nos projetos e objetivos escolares/ acadêmicos</p>
-<h2 id="pre-requisitos">Pré-requisitos</h2>
-<p>Configuração mínima da máquina em que o código foi desenvolvido:</p>
+<p>Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docente a usufruir da estrutura disponível no Colégio Politécnico. Com o objetivo de permitir o agendamento de salas e laboratórios, através da realização das atividades de classe e extra-classe.</p>
+<h2 id="funcionalidades">Funcionalidades</h2>
+<h4 id="autenticacao-de-login"><strong>Autenticação de login:</strong></h4>
+<p>Acesso livre ao site, porém para realizar agendamentos é necessário a autenticação através do CPF e senha de usuário.</p>
+<h4 id="dashboard-de-agendamento"><strong>Dashboard de agendamento:</strong></h4>
+<p>O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco desejado e a sala. Posteriormente, será exibido no calendário os agendamentos para a semana daquela sala. Clicando no botão de "Agendar", o usuário conseguirá realizar um agendamento ou será redirecionado para a página de login (caso não esteja logado).</p>
+<h4 id="controle-de-agendamentos"><strong>Controle de agendamentos:</strong></h4>
+<p>Uma página onde é possível visualizar os agendamentos realizados pelo usuário e seu status.</p>
+<h4 id="controle-de-salas-reservado-a-administradores"><strong>Controle de salas – reservado a administradores:</strong></h4>
+<p>Uma página onde usuários com controle de administrador conseguem cadastrar, alterar e ativar/desativar salas.\</p>
+<h2 id="requisitos-para-funcionamento">Requisitos para funcionamento</h2>
+<p>Configuração da máquina em que o código foi desenvolvido:</p>
 <table>
 <thead>
 <tr>
@@ -104,34 +124,45 @@
 <tbody>
 <tr>
 <td>Sistema operacional</td>
-<td>Windows 10 Pro (64 bits)</td>
-</tr>
-<tr>
-<td>Processador</td>
-<td>Intel core i7 9700</td>
-</tr>
-<tr>
-<td>Memória RAM</td>
-<td>8 GB</td>
+<td>Windows</td>
 </tr>
 <tr>
 <td>Necessita rede?</td>
-<td>Não</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Ferramenta</td>
+<td>Intellij IDEA</td>
 </tr>
 </tbody>
 </table>
+<h2 id="tecnologias-utilizadas">Tecnologias utilizadas</h2>
+<h4 id="backend"><strong>Backend:</strong></h4>
+<p>Java 21, Spring Boot, Flyway e Hibernate</p>
+<h4 id="frontend"><strong>Frontend:</strong></h4>
+<p>Angular 12 e Node</p>
+<h4 id="banco-de-dados"><strong>Banco de Dados:</strong></h4>
+<p>PostgreSQL</p>
 <h2 id="como-funciona">Como funciona</h2>
 <ul>
 <li>
 <p>Instalar dependências no seu computador:</p>
 <ul>
-<li>NodeJS (escolhendo a versão desejada ou criando um ambiente virtual em docker:</li>
+<li>NodeJS (versão recomendada 16.13.0):</li>
 </ul>
 <p><code>https://nodejs.org/en/download</code></p>
 <ul>
 <li>Angular (dentro do prompt de comando, verificando se o <code>node</code> está funcionando e o gerenciador de pacotes <code>npn</code>, digitar o seguinte comando):</li>
 </ul>
-<p><code>npm install -g @angular/cli@12.2.7</code></p>
+<p><code>npm install -g @angular/cli@12.2.17</code></p>
+<ul>
+<li>
+<p>Java JDK 21 ou superior</p>
+</li>
+<li>
+<p>PostgreSQL 16 ou superior</p>
+</li>
+</ul>
 <p><strong>Lembrando que, se já houver uma versão do angular instalado em sua máquina, será preciso desinstalar.</strong></p>
 <ul>
 <li>
@@ -142,6 +173,9 @@
 </li>
 </ul>
 </li>
+</ul>
+<h2 id="instrucoes-de-uso">Instruções de Uso</h2>
+<ul>
 <li>
 <p>Dê um fork através do github no projeto usando os seguintes endereços</p>
 <ul>
@@ -154,13 +188,18 @@
 </ul>
 </li>
 </ul>
-<h2 id="como-agendar">Como agendar?</h2>
-<h2 id="estrutura-do-frontend">Estrutura do frontend</h2>
-<pre><code>docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
-<h2 id="estrutura-do-backend">Estrutura do backend</h2>
+<h2 id="como-rodar">Como rodar</h2>
+<ol>
+<li>De o git clone no repositório de backend: <code>git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/</code>.</li>
+<li>Criar o banco de dados "sistema-agendamentos".</li>
+<li>Troque a senha do seu banco de dados no arquivo application.proprieties para a sua senha.</li>
+<li>Rode o backend. Ele estará rodando na porta 8080, você poderá confirmar no link http://localhost:8080.</li>
+<li>De o git clone no repositório de frontend: <code>git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend</code></li>
+<li>Instale as dependências do Angular. Use o comando <code>npm install</code></li>
+<li>Rode o frontend, com o comando <code>ng serve</code> (caso sua versão global do Angular seja a 12.2.17).</li>
+<li>Caso sua versão não seja a global use o comando para rodar o angular com a versão do angular local (na pasta onde foi instalada as dependências): <code>npx ng serve</code>.</li>
+<li>O frontend estará rodando na porta 4200, você poderá confirmar no link http://localhost:4200.</li>
+</ol>
               
             </div>
           </div><footer>
@@ -204,5 +243,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-10-07 23:53:46.821029+00:00
+Build Date UTC : 2025-10-08 00:30:15.864643+00:00
 -->
