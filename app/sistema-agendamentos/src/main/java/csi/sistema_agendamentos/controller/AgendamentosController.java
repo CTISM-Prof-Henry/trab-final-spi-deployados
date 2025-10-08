@@ -40,12 +40,14 @@ public class AgendamentosController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Integer id) {
+        ResponseEntity<?> response;
         try {
             AgendamentosDTO agendamento = agendamentosService.buscarPorId(id);
-            return ResponseEntity.ok(agendamento);
+            response = ResponseEntity.ok(agendamento);
         } catch (EntityNotFoundException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            response = new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
+        return response;
     }
 
     @GetMapping("/sala/{salaId}")
