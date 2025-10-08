@@ -1,19 +1,8 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
-# Sistema de Agendamentos de Salas do Colégio Politécnico da UFSM
+# Software de agendamento de Salas de Aula do Colégio Politécnico
+
+## Para que serve?
 
 Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docente a usufruir da estrutura disponível no Colégio Politécnico. Com o objetivo de permitir o agendamento de salas e laboratórios, através da realização das atividades de classe e extra-classe.
-
-## Sumário
-
-* [Funcionalidades](#funcionalidades)
-* [Pré-requisitos](#pré-requisitos)
-* [Tecnologias utilizadas](#tecnologias-utilizadas)
-* [Instalação](#instalação)
-* [Instruções de uso](#instruções-de-uso)
-* [Como rodar](#como-rodar)
-* [Contato](#contato)
-* [Bibliografia](#bibliografia)
-
 
 ## Funcionalidades
 
@@ -27,10 +16,10 @@ O dashboard apresenta um calendário, onde o usuário irá selecionar o bloco de
 Uma página onde é possível visualizar os agendamentos realizados pelo usuário e seu status.
 
 #### **Controle de salas – reservado a administradores:**  
-Uma página onde usuários com controle de administrador conseguem cadastrar, alterar e ativar/desativar salas.
+Uma página onde usuários com controle de administrador conseguem cadastrar, alterar e ativar/desativar salas.\
 
 
-## Pré-requisitos
+## Requisitos para funcionamento
 
 Configuração da máquina em que o código foi desenvolvido:
 
@@ -52,7 +41,7 @@ Angular 12 e Node
 #### **Banco de Dados:**  
 PostgreSQL
 
-## Instalação
+## Como funciona
 
 * Instalar dependências no seu computador:
 
@@ -67,16 +56,19 @@ PostgreSQL
     * Java JDK 21 ou superior
     
     * PostgreSQL 16 ou superior
-
-
+    
+    **Lembrando que, se já houver uma versão do angular instalado em sua máquina, será preciso desinstalar.**
+    
+    
 ## Instruções de Uso
 
-* Dê um clone através do github no projeto usando os seguintes endereços
+* Dê um fork através do github no projeto usando os seguintes endereços
 
     * Backend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`
 
     * Frontend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend`
- 
+    
+
 ## Como rodar
 
    1. De o git clone no repositório de backend: `git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`.
@@ -89,16 +81,5 @@ PostgreSQL
    8. Caso sua versão não seja a global use o comando para rodar o angular com a versão do angular local (na pasta onde foi instalada as dependências): `npx ng serve`.
    9. O frontend estará rodando na porta 4200, você poderá confirmar no link http://localhost:4200.
 
-## Contato
 
-Projeto desenvolvido para a Disciplina de Engenharia de Software II do Curso de Sistemas Para Internet, Colégio Politécnico de Santa Maria, pelos alunos
 
-* Analissa
-* Eduardo
-* Luiza
-* Stefhany
-* Talia
-
-## Bibliografia
-
-Documentação disponível em https://ctism-prof-henry.github.io/trab-final-spi-deployados/
