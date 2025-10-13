@@ -67,7 +67,7 @@ class AgendamentosServiceTest {
     }
 
     @Test
-    void listarTodos_DeveRetornarListaDeAgendamentoDTO() {
+    void listarTodosAgendamentoDTO() {
 
         when(agendamentosRepository.findAll()).thenReturn(Collections.singletonList(agendamento));
 
@@ -79,14 +79,14 @@ class AgendamentosServiceTest {
     }
 
     @Test
-    void buscarPorId_QuandoEncontrado_DeveRetornarAgendamentoDTO() {
+    void buscarAgendamentoDTOPorId() {
         when(agendamentosRepository.findById(1)).thenReturn(Optional.of(agendamento));
         AgendamentosDTO resultado = agendamentosService.buscarPorId(1);
         assertNotNull(resultado);
     }
 
     @Test
-    void buscarPorId_QuandoNaoEncontrado_DeveLancarExcecao() {
+    void buscarrAgendamentoDTOPorIdInvalido() {
         when(agendamentosRepository.findById(99)).thenReturn(Optional.empty());
 
         assertThrows(EntityNotFoundException.class, () -> {
@@ -95,7 +95,7 @@ class AgendamentosServiceTest {
     }
 
     @Test
-    void criarAgendamento_ComDadosValidos_DeveSalvarERetornarDTO() {
+    void criarAgendamentoValido() {
         AgendamentosDTO novoDto = new AgendamentosDTO();
         novoDto.setDataInicio(inicio);
         novoDto.setDataFim(fim);
@@ -114,7 +114,7 @@ class AgendamentosServiceTest {
     }
 
     @Test
-    void atualizarAgendamento_ComDadosValidos_DeveAtualizarERetornarDTO() {
+    void atualizarAgendamento() {
 
         LocalDateTime novoFim = fim.plusHours(1);
         agendamentoDTO.setDataFim(novoFim);
@@ -130,7 +130,7 @@ class AgendamentosServiceTest {
     }
 
     @Test
-    void cancelarAgendamento_QuandoEncontrado_DeveMudarStatusParaCancelado() {
+    void cancelarAgendamento() {
 
         when(agendamentosRepository.findById(1)).thenReturn(Optional.of(agendamento));
         when(agendamentosRepository.save(any(Agendamentos.class))).thenReturn(agendamento);
