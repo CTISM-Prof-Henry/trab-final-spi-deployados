@@ -10,6 +10,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,16 +27,17 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(AgendamentosController.class) // Testa apenas a camada web para este controller
+@WebMvcTest(controllers = AgendamentosController.class,
+        excludeAutoConfiguration = SecurityAutoConfiguration.class)// Testa apenas a camada web para este controller
 class AgendamentosControllerTest {
 
     @Autowired
-    private MockMvc mockMvc; // Objeto para simular requisições HTTP (POST, GET, etc.)
+    private MockMvc mockMvc; //simula requisições HTTP
 
     @Autowired
-    private ObjectMapper objectMapper; // Para converter objetos Java em JSON e vice-versa
+    private ObjectMapper objectMapper; //onverte objetos Java em JSON e vice-versa
 
-    @MockBean // Cria um "dublê" do serviço. Não usamos a lógica real do service, nós a simulamos.
+    @MockBean
     private AgendamentosService agendamentosService;
 
     @MockBean private AgendamentosRepository agendamentosRepository;
@@ -56,7 +58,7 @@ class AgendamentosControllerTest {
     }
 
     @Test
-    void criar_DeveRetornarStatusCreatedEAgendamento() throws Exception {
+    void criarAgendamento() throws Exception {
 
         when(agendamentosService.criarAgendamento(any(AgendamentosDTO.class))).thenReturn(agendamentoDTO);
 
@@ -69,7 +71,7 @@ class AgendamentosControllerTest {
     }
 
     @Test
-    void listarTodos_DeveRetornarStatusOKeListaDeAgendamentos() throws Exception {
+    void listarTodosAgendamentos() throws Exception {
         when(agendamentosService.listarTodos()).thenReturn(Collections.singletonList(agendamentoDTO));
 
         mockMvc.perform(get("/agendamentos"))
@@ -78,7 +80,7 @@ class AgendamentosControllerTest {
     }
 
     @Test
-    void buscarPorId_QuandoEncontrado_DeveRetornarStatusOKeAgendamento() throws Exception {
+    void buscarAgendamentoPorIdo() throws Exception {
         when(agendamentosService.buscarPorId(1)).thenReturn(agendamentoDTO);
 
         mockMvc.perform(get("/agendamentos/1"))
@@ -87,7 +89,7 @@ class AgendamentosControllerTest {
     }
 
     @Test
-    void buscarPorId_QuandoNaoEncontrado_DeveRetornarStatusNotFound() throws Exception {
+    void buscarAgendamentoInvalidoPorId() throws Exception {
         when(agendamentosService.buscarPorId(99)).thenThrow(new EntityNotFoundException("Não encontrado"));
 
         mockMvc.perform(get("/agendamentos/99"))
@@ -95,7 +97,7 @@ class AgendamentosControllerTest {
     }
 
     @Test
-    void atualizar_DeveRetornarStatusOKeAgendamentoAtualizado() throws Exception {
+    void atualizarAgendamento() throws Exception {
         when(agendamentosService.atualizarAgendamento(eq(1), any(AgendamentosDTO.class))).thenReturn(agendamentoDTO);
 
         mockMvc.perform(put("/agendamentos/1")
@@ -106,7 +108,7 @@ class AgendamentosControllerTest {
     }
 
     @Test
-    void cancelar_DeveRetornarStatusNoContent() throws Exception {
+    void cancelarAgendamento() throws Exception {
         doNothing().when(agendamentosService).cancelarAgendamento(1);
         mockMvc.perform(delete("/agendamentos/1"))
                 .andExpect(status().isNoContent()); // Espera HTTP 204
