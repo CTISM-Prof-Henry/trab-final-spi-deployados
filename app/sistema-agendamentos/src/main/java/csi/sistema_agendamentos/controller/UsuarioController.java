@@ -21,7 +21,7 @@ public class UsuarioController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO login, HttpSession session) {
+    public ResponseEntity<?> login(@RequestBody final LoginDTO login, final HttpSession session) {
         ResponseEntity<?> response;
 
         if (login.getCpf() == null || login.getCpf().trim().isEmpty() ||
@@ -50,10 +50,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/acessar/{id}")
-    public ResponseEntity<String> acessarRecurso(@PathVariable Integer id) {
+    public ResponseEntity<String> acessarRecurso(@PathVariable final Integer id) {
         ResponseEntity<String> response;
 
-        Usuario usuario = usuarioService.buscarUsuarioPorId(id).orElse(null);
+        final Usuario usuario = usuarioService.buscarUsuarioPorId(id).orElse(null);
 
         if (usuario == null) {
             response = ResponseEntity.notFound().build();
@@ -63,7 +63,7 @@ public class UsuarioController {
                 case 2 -> response = ResponseEntity.ok("Acessado: DOCENTE.");
                 case 3 -> response = ResponseEntity.ok("Acessado: ALUNO.");
                 default -> response  = ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado.");
-            };
+            }
         }
         return response;
 
@@ -71,11 +71,12 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<List<Usuario>> listarUsuarios() {
+
         return ResponseEntity.ok(usuarioService.listarUsuarios());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Integer id) {
+    public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable final Integer id) {
         return usuarioService.buscarUsuarioPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

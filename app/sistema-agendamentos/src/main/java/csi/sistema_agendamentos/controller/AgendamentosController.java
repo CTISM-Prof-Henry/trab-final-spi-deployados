@@ -1,5 +1,6 @@
 package csi.sistema_agendamentos.controller;
 
+
 import csi.sistema_agendamentos.dto.AgendamentosDTO;
 import csi.sistema_agendamentos.service.AgendamentosService;
 import jakarta.persistence.EntityNotFoundException;
@@ -21,28 +22,31 @@ public class AgendamentosController {
     }
 
     @PostMapping
-    public ResponseEntity<?> criar(@RequestBody AgendamentosDTO dto) {
+    public ResponseEntity<?> criar(@RequestBody final AgendamentosDTO dto) {
+        ResponseEntity<?> response;
         try {
-            AgendamentosDTO agendamentoCriado = agendamentosService.criarAgendamento(dto);
-            return new ResponseEntity<>(agendamentoCriado, HttpStatus.CREATED);
+            final AgendamentosDTO agendamentoCriado = agendamentosService.criarAgendamento(dto);
+            response = new ResponseEntity<>(agendamentoCriado, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+
+        return response;
     }
 
 
 
     @GetMapping
     public ResponseEntity<List<AgendamentosDTO>> listarTodos() {
-        List<AgendamentosDTO> agendamentos = agendamentosService.listarTodos();
+        final List<AgendamentosDTO> agendamentos = agendamentosService.listarTodos();
         return ResponseEntity.ok(agendamentos);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarPorId(@PathVariable Integer id) {
+    public ResponseEntity<?> buscarPorId(@PathVariable final Integer id) {
         ResponseEntity<?> response;
         try {
-            AgendamentosDTO agendamento = agendamentosService.buscarPorId(id);
+           final AgendamentosDTO agendamento = agendamentosService.buscarPorId(id);
             response = ResponseEntity.ok(agendamento);
         } catch (EntityNotFoundException e) {
             response = new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
@@ -51,20 +55,20 @@ public class AgendamentosController {
     }
 
     @GetMapping("/sala/{salaId}")
-    public ResponseEntity<List<AgendamentosDTO>> listarPorSala(@PathVariable Integer salaId) {
-        List<AgendamentosDTO> agendamentos = agendamentosService.listarPorSala(salaId);
+    public ResponseEntity<List<AgendamentosDTO>> listarPorSala(@PathVariable final Integer salaId) {
+        final List<AgendamentosDTO> agendamentos = agendamentosService.listarPorSala(salaId);
         return ResponseEntity.ok(agendamentos);
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<AgendamentosDTO> atualizar(@PathVariable Integer id, @RequestBody AgendamentosDTO dto) {
-        AgendamentosDTO agendamentoAtualizado = agendamentosService.atualizarAgendamento(id, dto);
+    public ResponseEntity<AgendamentosDTO> atualizar(@PathVariable final Integer id, @RequestBody AgendamentosDTO dto) {
+        final AgendamentosDTO agendamentoAtualizado = agendamentosService.atualizarAgendamento(id, dto);
         return ResponseEntity.ok(agendamentoAtualizado);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> cancelar(@PathVariable Integer id) {
+    public ResponseEntity<Void> cancelar(@PathVariable final Integer id) {
         agendamentosService.cancelarAgendamento(id);
         return ResponseEntity.noContent().build();
     }
