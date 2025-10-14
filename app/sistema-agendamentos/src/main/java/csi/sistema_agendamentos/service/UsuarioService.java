@@ -20,12 +20,12 @@ public class UsuarioService {
     }
 
 
-    public Optional<Usuario> buscarUsuarioPorId(Integer id) {
+    public Optional<Usuario> buscarUsuarioPorId(final Integer id) {
         return usuarioRepository.findById(id);
     }
 
 
-    public Usuario buscarUsuarioPorCpf(String cpf) {
+    public Usuario buscarUsuarioPorCpf(final String cpf) {
         return (Usuario) usuarioRepository.findByCpf(cpf).orElse(null);
     }
 

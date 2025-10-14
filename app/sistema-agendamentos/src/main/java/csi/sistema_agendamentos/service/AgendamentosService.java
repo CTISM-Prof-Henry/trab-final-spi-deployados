@@ -28,16 +28,16 @@ public class AgendamentosService {
     }
 
     @Transactional
-    public AgendamentosDTO criarAgendamento(AgendamentosDTO dto) {
+    public AgendamentosDTO criarAgendamento(final AgendamentosDTO dto) {
 
-        Sala sala = salaRepository.findById(dto.getSalaId())
+        final Sala sala = salaRepository.findById(dto.getSalaId())
                 .orElseThrow(() -> new EntityNotFoundException("Sala não encontrada com ID: " + dto.getSalaId()));
 
-        Usuario usuario = usuarioRepository.findById(dto.getUsuarioId())
+        final Usuario usuario = usuarioRepository.findById(dto.getUsuarioId())
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + dto.getUsuarioId()));
 
 
-        List<Agendamentos> conflitos = agendamentosRepository.findConflitos(
+        final List<Agendamentos> conflitos = agendamentosRepository.findConflitos(
                 sala.getIdSala(),
                 "Ativo",
                 dto.getDataInicio(),
@@ -48,10 +48,10 @@ public class AgendamentosService {
             throw new IllegalArgumentException("Já existe um agendamento para esta sala neste horário!");
         }
 
-        Agendamentos agendamento = convertToEntity(dto, sala, usuario);
+        final Agendamentos agendamento = convertToEntity(dto, sala, usuario);
         agendamento.setStatus("Ativo");
 
-        Agendamentos agendamentoSalvo = agendamentosRepository.save(agendamento);
+        final Agendamentos agendamentoSalvo = agendamentosRepository.save(agendamento);
         return convertToDTO(agendamentoSalvo);
     }
 
@@ -66,14 +66,14 @@ public class AgendamentosService {
     }
 
     @Transactional(readOnly = true)
-    public AgendamentosDTO buscarPorId(Integer id) {
+    public AgendamentosDTO buscarPorId(final Integer id) {
         return agendamentosRepository.findById(id)
                 .map(this::convertToDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Agendamento não encontrado com ID: " + id));
     }
 
     @Transactional(readOnly = true)
-    public List<AgendamentosDTO> listarPorSala(Integer salaId) {
+    public List<AgendamentosDTO> listarPorSala(final Integer salaId) {
         return agendamentosRepository.findBySalaIdSala(salaId)
                 .stream()
                 .map(this::convertToDTO)
@@ -81,21 +81,21 @@ public class AgendamentosService {
     }
 
     @Transactional
-    public AgendamentosDTO atualizarAgendamento(Integer id, AgendamentosDTO dto) {
-        Agendamentos agendamentoExistente = agendamentosRepository.findById(id)
+    public AgendamentosDTO atualizarAgendamento(final Integer id, final AgendamentosDTO dto) {
+        final Agendamentos agendamentoExistente = agendamentosRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Agendamento não encontrado com ID: " + id));
 
         agendamentoExistente.setData_inicio(dto.getDataInicio());
         agendamentoExistente.setData_fim(dto.getDataFim());
 
-        Agendamentos agendamentoAtualizado = agendamentosRepository.save(agendamentoExistente);
+        final Agendamentos agendamentoAtualizado = agendamentosRepository.save(agendamentoExistente);
         return convertToDTO(agendamentoAtualizado);
     }
 
 
     @Transactional
-    public void cancelarAgendamento(Integer id) {
-        Agendamentos agendamento = agendamentosRepository.findById(id)
+    public void cancelarAgendamento(final Integer id) {
+        final Agendamentos agendamento = agendamentosRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Agendamento não encontrado com ID: " + id));
 
         agendamento.setStatus("CANCELADO");
@@ -103,8 +103,8 @@ public class AgendamentosService {
     }
 
 
-    private AgendamentosDTO convertToDTO(Agendamentos agendamento) {
-        AgendamentosDTO dto = new AgendamentosDTO();
+    private AgendamentosDTO convertToDTO(final Agendamentos agendamento) {
+        final AgendamentosDTO dto = new AgendamentosDTO();
         dto.setId(agendamento.getId_agendamento());
         dto.setDataInicio(agendamento.getData_inicio());
         dto.setDataFim(agendamento.getData_fim());
@@ -116,8 +116,8 @@ public class AgendamentosService {
         return dto;
     }
 
-    private Agendamentos convertToEntity(AgendamentosDTO dto, Sala sala, Usuario usuario) {
-        Agendamentos agendamento = new Agendamentos();
+    private Agendamentos convertToEntity(final AgendamentosDTO dto, final Sala sala, final Usuario usuario) {
+        final Agendamentos agendamento = new Agendamentos();
         agendamento.setData_inicio(dto.getDataInicio());
         agendamento.setData_fim(dto.getDataFim());
         agendamento.setStatus(dto.getStatus());

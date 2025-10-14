@@ -18,7 +18,7 @@ public class SistemaAgendamentosApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(UsuarioRepository UsuarioRepository, SalaRepository salaRepository, AgendamentosRepository agendamentosRepository) {
+	public CommandLineRunner demo(UsuarioRepository usuarioRepository, SalaRepository salaRepository, AgendamentosRepository agendamentosRepository) {
 		return (args) -> {
 
         };
