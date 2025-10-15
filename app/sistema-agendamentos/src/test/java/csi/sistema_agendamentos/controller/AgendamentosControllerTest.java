@@ -1,116 +1,159 @@
 package csi.sistema_agendamentos.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import csi.sistema_agendamentos.dto.AgendamentosDTO;
-import csi.sistema_agendamentos.repository.AgendamentosRepository;
-import csi.sistema_agendamentos.repository.SalaRepository;
-import csi.sistema_agendamentos.repository.UsuarioRepository;
 import csi.sistema_agendamentos.service.AgendamentosService;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
 
-@WebMvcTest(controllers = AgendamentosController.class,
-        excludeAutoConfiguration = SecurityAutoConfiguration.class)// Testa apenas a camada web para este controller
+/**
+ * Teste de unidade puro para AgendamentosController.
+ * Testa a lógica do controller de forma isolada, sem carregar o contexto do Spring.
+ * É mais rápido e focado que testes com @WebMvcTest.
+ */
+@ExtendWith(MockitoExtension.class)
 class AgendamentosControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc; //simula requisições HTTP
+    @Mock
+    private AgendamentosService agendamentoService; // Mock da dependência
 
-    @Autowired
-    private ObjectMapper objectMapper; //onverte objetos Java em JSON e vice-versa
-
-    @MockBean
-    private AgendamentosService agendamentosService;
-
-    @MockBean private AgendamentosRepository agendamentosRepository;
-    @MockBean private SalaRepository salaRepository;
-    @MockBean private UsuarioRepository usuarioRepository;
+    @InjectMocks
+    private AgendamentosController agendamentosController; // Instância real do Controller com o mock injetado
 
     private AgendamentosDTO agendamentoDTO;
 
     @BeforeEach
     void setUp() {
+        // Cria um DTO padrão para ser usado na maioria dos testes
         agendamentoDTO = new AgendamentosDTO();
         agendamentoDTO.setId(1);
-        agendamentoDTO.setDataInicio(LocalDateTime.of(2025, 9, 14, 20, 0, 0));
-        agendamentoDTO.setDataFim(LocalDateTime.of(2025, 9, 14, 21, 0, 0));
+        agendamentoDTO.setDataInicio(LocalDateTime.now().plusDays(1));
+        agendamentoDTO.setDataFim(LocalDateTime.now().plusDays(1).plusHours(1));
         agendamentoDTO.setStatus("CONFIRMADO");
         agendamentoDTO.setSalaId(1);
         agendamentoDTO.setUsuarioId(1);
     }
 
     @Test
-    void criarAgendamento() throws Exception {
+    void criarAgendamentoValido() {
+        // Arrange (Preparação)
+        when(agendamentoService.criarAgendamento(any(AgendamentosDTO.class))).thenReturn(agendamentoDTO);
 
-        when(agendamentosService.criarAgendamento(any(AgendamentosDTO.class))).thenReturn(agendamentoDTO);
+        // Act (Ação)
+        ResponseEntity<?> resposta = agendamentosController.criar(agendamentoDTO);
 
-        mockMvc.perform(post("/agendamentos")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(agendamentoDTO)))
-                .andExpect(status().isCreated()) // Espera HTTP 201
-                .andExpect(jsonPath("$.id").value(1)) // Verifica o JSON de resposta
-                .andExpect(jsonPath("$.status").value("CONFIRMADO"));
+        // Assert (Verificação)
+        assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
+        assertNotNull(resposta.getBody());
+        assertEquals(agendamentoDTO.getId(), ((AgendamentosDTO) resposta.getBody()).getId());
     }
 
     @Test
-    void listarTodosAgendamentos() throws Exception {
-        when(agendamentosService.listarTodos()).thenReturn(Collections.singletonList(agendamentoDTO));
+    void criarAgendamentoComConflito() {
+        // Arrange
+        String mensagemErro = "Horário indisponível para esta sala.";
+        when(agendamentoService.criarAgendamento(any(AgendamentosDTO.class)))
+                .thenThrow(new IllegalArgumentException(mensagemErro));
 
-        mockMvc.perform(get("/agendamentos"))
-                .andExpect(status().isOk()) // Espera HTTP 200
-                .andExpect(jsonPath("$[0].id").value(1));
+        // Act
+        ResponseEntity<?> resposta = agendamentosController.criar(agendamentoDTO);
+
+        // Assert
+        assertEquals(HttpStatus.BAD_REQUEST, resposta.getStatusCode());
+        assertEquals(mensagemErro, resposta.getBody());
     }
 
     @Test
-    void buscarAgendamentoPorIdo() throws Exception {
-        when(agendamentosService.buscarPorId(1)).thenReturn(agendamentoDTO);
+    void listarTodos() {
+        // Arrange
+        when(agendamentoService.listarTodos()).thenReturn(Collections.singletonList(agendamentoDTO));
 
-        mockMvc.perform(get("/agendamentos/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1));
+        // Act
+        ResponseEntity<List<AgendamentosDTO>> resposta = agendamentosController.listarTodos();
+
+        // Assert
+        assertEquals(HttpStatus.OK, resposta.getStatusCode());
+        assertEquals(1, resposta.getBody().size());
     }
 
     @Test
-    void buscarAgendamentoInvalidoPorId() throws Exception {
-        when(agendamentosService.buscarPorId(99)).thenThrow(new EntityNotFoundException("Não encontrado"));
+    void buscarPorIdExistente() {
+        // Arrange
+        when(agendamentoService.buscarPorId(1)).thenReturn(agendamentoDTO);
 
-        mockMvc.perform(get("/agendamentos/99"))
-                .andExpect(status().isNotFound());
+        // Act
+        ResponseEntity<?> resposta = agendamentosController.buscarPorId(1);
+
+        // Assert
+        assertEquals(HttpStatus.OK, resposta.getStatusCode());
+        assertNotNull(resposta.getBody());
     }
 
     @Test
-    void atualizarAgendamento() throws Exception {
-        when(agendamentosService.atualizarAgendamento(eq(1), any(AgendamentosDTO.class))).thenReturn(agendamentoDTO);
+    void buscarPorIdInexistente() {
+        // Arrange
+        String mensagemErro = "Agendamento não encontrado.";
+        when(agendamentoService.buscarPorId(99)).thenThrow(new EntityNotFoundException(mensagemErro));
 
-        mockMvc.perform(put("/agendamentos/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(agendamentoDTO)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("CONFIRMADO"));
+        // Act
+        ResponseEntity<?> resposta = agendamentosController.buscarPorId(99);
+
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, resposta.getStatusCode());
+        assertEquals(mensagemErro, resposta.getBody());
     }
 
     @Test
-    void cancelarAgendamento() throws Exception {
-        doNothing().when(agendamentosService).cancelarAgendamento(1);
-        mockMvc.perform(delete("/agendamentos/1"))
-                .andExpect(status().isNoContent()); // Espera HTTP 204
+    void listarPorSala() {
+        // Arrange
+        when(agendamentoService.listarPorSala(1)).thenReturn(Collections.singletonList(agendamentoDTO));
+
+        // Act
+        ResponseEntity<List<AgendamentosDTO>> resposta = agendamentosController.listarPorSala(1);
+
+        // Assert
+        assertEquals(HttpStatus.OK, resposta.getStatusCode());
+        assertEquals(1, resposta.getBody().size());
+    }
+
+    @Test
+    void atualizarAgendamento() {
+        // Arrange
+        when(agendamentoService.atualizarAgendamento(eq(1), any(AgendamentosDTO.class))).thenReturn(agendamentoDTO);
+
+        // Act
+        ResponseEntity<AgendamentosDTO> resposta = agendamentosController.atualizar(1, agendamentoDTO);
+
+        // Assert
+        assertEquals(HttpStatus.OK, resposta.getStatusCode());
+        assertNotNull(resposta.getBody());
+    }
+
+    @Test
+    void cancelarAgendamento() {
+        // Arrange
+        doNothing().when(agendamentoService).cancelarAgendamento(1);
+
+        // Act
+        ResponseEntity<Void> resposta = agendamentosController.cancelar(1);
+
+        // Assert
+        assertEquals(HttpStatus.NO_CONTENT, resposta.getStatusCode());
+        verify(agendamentoService, times(1)).cancelarAgendamento(1); // Garante que o método foi chamado
     }
 }
