@@ -26,6 +26,10 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class AgendamentosServiceTest {
 
+    public AgendamentosServiceTest() {
+
+    }
+
     @Mock
     private AgendamentosRepository agendamentosRepository;
     @Mock
@@ -89,9 +93,7 @@ class AgendamentosServiceTest {
     void buscarrAgendamentoDTOPorIdInvalido() {
         when(agendamentosRepository.findById(99)).thenReturn(Optional.empty());
 
-        assertThrows(EntityNotFoundException.class, () -> {
-            agendamentosService.buscarPorId(99);
-        });
+        assertThrows(EntityNotFoundException.class, () -> agendamentosService.buscarPorId(99));
     }
 
     @Test
