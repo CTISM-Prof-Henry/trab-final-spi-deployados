@@ -93,9 +93,7 @@ class AgendamentosServiceTest {
     void buscarrAgendamentoDTOPorIdInvalido() {
         when(agendamentosRepository.findById(99)).thenReturn(Optional.empty());
 
-        assertThrows(EntityNotFoundException.class, () -> {
-            agendamentosService.buscarPorId(99);
-        });
+        assertThrows(EntityNotFoundException.class, () -> agendamentosService.buscarPorId(99));
     }
 
     @Test
