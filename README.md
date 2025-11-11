@@ -98,7 +98,3 @@ Projeto desenvolvido para a Disciplina de Engenharia de Software II do Curso de 
 * Luiza
 * Stefhany
 * Talia
-
-## Bibliografia
-
-Documentação disponível em https://programandaana.github.io/teste-doc-deployados/
