@@ -72,4 +72,11 @@ public class AgendamentosController {
         agendamentosService.cancelarAgendamento(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<List<AgendamentosDTO>> listarPorUsuario(@PathVariable Integer usuarioId) {
+        List<AgendamentosDTO> agendamentos = agendamentosService.listarPorUsuario(usuarioId);
+        return ResponseEntity.ok(agendamentos);
+    }
+
 }

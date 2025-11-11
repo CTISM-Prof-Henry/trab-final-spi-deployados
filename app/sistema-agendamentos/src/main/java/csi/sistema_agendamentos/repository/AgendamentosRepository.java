@@ -24,5 +24,6 @@ public interface AgendamentosRepository extends JpaRepository<Agendamentos, Inte
             @Param("dataFim") LocalDateTime dataFim
     );
 
+    List<Agendamentos> findByUsuarioIdUsuario(Integer idUsuario);
 
 }
