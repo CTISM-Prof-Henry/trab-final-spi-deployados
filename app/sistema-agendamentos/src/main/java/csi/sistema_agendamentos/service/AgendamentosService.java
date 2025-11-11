@@ -125,4 +125,13 @@ public class AgendamentosService {
         agendamento.setUsuario(usuario);
         return agendamento;
     }
+
+    @Transactional(readOnly = true)
+    public List<AgendamentosDTO> listarPorUsuario(Integer usuarioId) {
+        return agendamentosRepository.findByUsuarioIdUsuario(usuarioId)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
 }
