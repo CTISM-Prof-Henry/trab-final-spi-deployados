@@ -6,14 +6,13 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 
 ### :memo: Sumário
 
-* [Funcionalidades](#funcionalidades)
-* [Pré-requisitos](#pré-requisitos)
-* [Tecnologias utilizadas](#tecnologias-utilizadas)
-* [Instalação](#instalação)
-* [Instruções de uso](#instruções-de-uso)
-* [Como rodar](#como-rodar)
-* [Contato](#contato)
-* [Bibliografia](#bibliografia)
+- [Funcionalidades](#funcionalidades)
+- [Pré-requisitos](#pre-requisitos)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
+- [Instalação](#instalacao)
+- [Instruções de uso](#instrucoes-de-uso)
+- [Como rodar](#como-rodar)
+- [Contato](#contato)
 
 
 ### :school: Funcionalidades
