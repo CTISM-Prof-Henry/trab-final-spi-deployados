@@ -1,9 +1,10 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/agg6sSBC)
-# Sistema de Agendamentos de Salas do Colégio Politécnico da UFSM
+
+## :newspaper: Sistema de Agendamentos de Salas do Colégio Politécnico da UFSM
 
 Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docente a usufruir da estrutura disponível no Colégio Politécnico. Com o objetivo de permitir o agendamento de salas e laboratórios, através da realização das atividades de classe e extra-classe.
 
-## Sumário
+### :memo: Sumário
 
 * [Funcionalidades](#funcionalidades)
 * [Pré-requisitos](#pré-requisitos)
@@ -15,7 +16,7 @@ Este aplicativo foi desenvolvido para auxiliar à comunidade acadêmica e docent
 * [Bibliografia](#bibliografia)
 
 
-## Funcionalidades
+### :school: Funcionalidades
 
 #### **Autenticação de login:**  
 Acesso livre ao site, porém para realizar agendamentos é necessário a autenticação através do CPF e senha de usuário.
@@ -30,7 +31,7 @@ Uma página onde é possível visualizar os agendamentos realizados pelo usuári
 Uma página onde usuários com controle de administrador conseguem cadastrar, alterar e ativar/desativar salas.
 
 
-## Pré-requisitos
+### :bangbang: Pré-requisitos
 
 Configuração da máquina em que o código foi desenvolvido:
 
@@ -41,7 +42,7 @@ Configuração da máquina em que o código foi desenvolvido:
 | Ferramenta          | Intellij IDEA            |
 
 
-## Tecnologias utilizadas
+### 📦 Tecnologias utilizadas
 
 #### **Backend:**  
 Java 21, Spring Boot, Flyway e Hibernate
@@ -52,7 +53,7 @@ Angular 12 e Node
 #### **Banco de Dados:**  
 PostgreSQL
 
-## Instalação
+### :wrench: Instalação
 
 * Instalar dependências no seu computador:
 
@@ -69,15 +70,15 @@ PostgreSQL
     * PostgreSQL 16 ou superior
 
 
-## Instruções de Uso
+### :notebook: Instruções de Uso
 
 * Dê um clone através do github no projeto usando os seguintes endereços
 
     * Backend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`
 
-    * Frontend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend`
+    * Frontend: `https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados-front`
  
-## Como rodar
+### :gear: Como rodar
 
    1. De o git clone no repositório de backend: `git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/`.
    2. Criar o banco de dados "sistema-agendamentos".
@@ -89,7 +90,7 @@ PostgreSQL
    8. Caso sua versão não seja a global use o comando para rodar o angular com a versão do angular local (na pasta onde foi instalada as dependências): `npx ng serve`.
    9. O frontend estará rodando na porta 4200, você poderá confirmar no link http://localhost:4200.
 
-## Contato
+### :trollface: Contato
 
 Projeto desenvolvido para a Disciplina de Engenharia de Software II do Curso de Sistemas Para Internet, Colégio Politécnico de Santa Maria, pelos alunos
 
