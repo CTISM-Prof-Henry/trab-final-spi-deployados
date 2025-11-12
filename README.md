@@ -84,7 +84,7 @@ PostgreSQL
    2. Criar o banco de dados "sistema-agendamentos".
    3. Troque a senha do seu banco de dados no arquivo application.proprieties para a sua senha.
    4. Rode o backend. Ele estará rodando na porta 8080, você poderá confirmar no link http://localhost:8080.
-   5. De o git clone no repositório de frontend: `git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados/frontend`
+   5. De o git clone no repositório de frontend: `git clone https://github.com/CTISM-Prof-Henry/trab-final-spi-deployados-front`
    6. Instale as dependências do Angular. Use o comando `npm install`
    7. Rode o frontend, com o comando `ng serve` (caso sua versão global do Angular seja a 12.2.17).
    8. Caso sua versão não seja a global use o comando para rodar o angular com a versão do angular local (na pasta onde foi instalada as dependências): `npx ng serve`.
