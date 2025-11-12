@@ -99,5 +99,22 @@ public class SalaController {
         return response;
     }
 
+    @PutMapping("/{id}/ativo")
+    public ResponseEntity<?> atualizarStatusAtivo(
+            @PathVariable Integer id,
+            @RequestParam boolean ativo,
+            HttpSession session) {
+
+        if (!isAdmin(session)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("Acesso negado. Requer permissão de administrador.");
+        }
+        try {
+            var salaAtualizadaDTO = salaService.atualizarStatusAtivo(id, ativo);
+            return ResponseEntity.ok(salaAtualizadaDTO);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 
 }

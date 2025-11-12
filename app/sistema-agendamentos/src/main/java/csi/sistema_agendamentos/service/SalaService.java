@@ -89,4 +89,14 @@ public class SalaService {
         }
         salaRepository.deleteById(id);
     }
+
+    @Transactional
+    public SalaDTO atualizarStatusAtivo(Integer id, boolean ativo) {
+        Sala sala = salaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Sala não encontrada com id " + id));
+
+        sala.setAtivo(ativo);
+        Sala salaSalva = salaRepository.save(sala);
+        return toDTO(salaSalva);
+    }
 }
