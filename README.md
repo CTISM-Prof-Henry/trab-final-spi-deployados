@@ -96,5 +96,5 @@ Projeto desenvolvido para a Disciplina de Engenharia de Software II do Curso de 
 * Analissa
 * Eduardo
 * Luiza
-* Stefhany
+* Sthefany
 * Talia
